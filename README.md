@@ -242,6 +242,7 @@ See the [examples/](examples/) directory for complete working examples:
 
 - [**Client Example**](examples/client/main.go) - Sign and send HTTP requests
 - [**Server Example**](examples/server/main.go) - Verify incoming requests with middleware
+- [**Secure Storage Example**](examples/secure-storage/) - **⚠️ IMPORTANT**: How to securely store SecretAccessKey with AES-256-GCM encryption
 
 ### Running the Examples
 

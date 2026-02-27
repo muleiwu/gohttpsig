@@ -242,6 +242,7 @@ mux.Handle("/api/", AuthMiddleware(verifier)(apiHandler))
 
 - [**客户端示例**](examples/client/main.go) - 签署并发送 HTTP 请求
 - [**服务端示例**](examples/server/main.go) - 使用中间件验证入站请求
+- [**安全存储示例**](examples/secure-storage/) - **⚠️ 重要**：如何使用 AES-256-GCM 加密安全存储 SecretAccessKey
 
 ### 运行示例
 

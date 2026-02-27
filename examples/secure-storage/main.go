@@ -10,8 +10,9 @@ import (
 	"net/http"
 	"os"
 
-	_ "github.com/lib/pq" // PostgreSQL driver (for demonstration)
 	"github.com/muleiwu/gohttpsig"
+	// Uncomment to use with PostgreSQL:
+	// _ "github.com/lib/pq"
 )
 
 func main() {
