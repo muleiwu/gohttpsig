@@ -103,6 +103,30 @@ func main() {
 
 ## Usage Guide
 
+### Generating Credentials
+
+Before you can sign requests, you need to generate secure credentials:
+
+```go
+// Generate new credentials
+creds, err := gohttpsig.GenerateCredentials()
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("AccessKeyID: %s\n", creds.AccessKeyID)
+fmt.Printf("SecretAccessKey: %s\n", creds.SecretAccessKey)
+// Output:
+// AccessKeyID: AKIAIOSFODNN7EXAMPLE (20 chars, alphanumeric)
+// SecretAccessKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY (40 chars, high entropy)
+```
+
+**Requirements:**
+- **AccessKeyID**: 20 characters, uppercase + digits, must be unique
+- **SecretAccessKey**: 40+ characters, high entropy, must be stored encrypted
+
+See [Credential Generation Example](examples/credential-generation/) for detailed requirements and best practices.
+
 ### Signing Options
 
 The `Signer` supports various configuration options:
@@ -242,6 +266,7 @@ See the [examples/](examples/) directory for complete working examples:
 
 - [**Client Example**](examples/client/main.go) - Sign and send HTTP requests
 - [**Server Example**](examples/server/main.go) - Verify incoming requests with middleware
+- [**Credential Generation**](examples/credential-generation/) - How to securely generate AccessKeyID and SecretAccessKey
 - [**Secure Storage Example**](examples/secure-storage/) - **⚠️ IMPORTANT**: How to securely store SecretAccessKey with AES-256-GCM encryption
 
 ### Running the Examples

@@ -103,6 +103,30 @@ func main() {
 
 ## 使用指南
 
+### 生成凭证
+
+在签署请求之前，您需要生成安全的凭证：
+
+```go
+// 生成新凭证
+creds, err := gohttpsig.GenerateCredentials()
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("AccessKeyID: %s\n", creds.AccessKeyID)
+fmt.Printf("SecretAccessKey: %s\n", creds.SecretAccessKey)
+// 输出：
+// AccessKeyID: AKIAIOSFODNN7EXAMPLE (20个字符，字母数字)
+// SecretAccessKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY (40个字符，高熵)
+```
+
+**要求：**
+- **AccessKeyID**：20个字符，大写字母+数字，必须唯一
+- **SecretAccessKey**：40+个字符，高熵，必须加密存储
+
+详细要求和最佳实践请参阅[凭证生成示例](examples/credential-generation/)。
+
 ### 签名选项
 
 `Signer` 支持多种配置选项：
@@ -242,6 +266,7 @@ mux.Handle("/api/", AuthMiddleware(verifier)(apiHandler))
 
 - [**客户端示例**](examples/client/main.go) - 签署并发送 HTTP 请求
 - [**服务端示例**](examples/server/main.go) - 使用中间件验证入站请求
+- [**凭证生成示例**](examples/credential-generation/) - 如何安全生成 AccessKeyID 和 SecretAccessKey
 - [**安全存储示例**](examples/secure-storage/) - **⚠️ 重要**：如何使用 AES-256-GCM 加密安全存储 SecretAccessKey
 
 ### 运行示例
